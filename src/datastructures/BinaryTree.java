@@ -50,10 +50,37 @@ public class BinaryTree<T extends Comparable> {
     }
 
     /**
+     * Metodo para obtener un elemento del arbol
+     * @param element Elemento que se desea obtener
+     * @return Elemento que se desea obtener
+     */
+    public BinaryNode getElement(T element){
+        return this.getElement(element, this.root);
+    }
+
+    /**
+     * Metodo recursivo para obtener un elemento del arbol
+     * @param element Elemento que se desea obtener
+     * @param node Nodo actual en el recorrido
+     * @return Elemento que se desea obtener
+     */
+    private BinaryNode getElement(T element, BinaryNode node){
+        if(node == null){
+            return null;
+        } else if(node.getData().compareTo(element) == 0){ //Caso en el que se ha llegado al elemento deseado
+            return node;
+        } else if(node.getData().compareTo(element) < 0){ //Si el dato del nodo actual es menor al elemento deseado
+            return this.getElement(element, node.getRight()); //Se continua con el hijo derecho del nodo actual
+        } else{ //El dato del nodo actual es mayor al elemento deseado
+            return this.getElement(element, node.getLeft()); //Se continua con el hijo izquierdo del nodo actual
+        }
+    }
+
+    /**
      * Metodo que encuentra el hijo menor del arbol
      * @return El nodo menor
      */
-    public BinaryNode findMin(){
+    private BinaryNode findMin(){
         return findMin(this.root);
     }
 
@@ -121,8 +148,7 @@ public class BinaryTree<T extends Comparable> {
             node.setRight(remove(element, node.getRight()));
         } else if(node.getLeft() != null && node.getRight() != null){
             node.setData(findMin(node.getRight()).getData());
-            T nodeData = (T) node.getData();
-            node.setRight(remove(nodeData, node.getRight()));
+            node.setRight(remove((T)node.getData(), node.getRight()));
         } else{
             node = node.getLeft() != null ? node.getLeft(): node.getRight();
         }

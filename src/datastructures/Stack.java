@@ -15,8 +15,8 @@ public class Stack<T extends Comparable<T>> {
         this.size = 0;
     }
 
-    public Node getTop() {
-        return top;
+    public T getTop() {
+        return (T)top.getDataT();
     }
 
     public int getSize() {
@@ -38,7 +38,7 @@ public class Stack<T extends Comparable<T>> {
      * Metodo que extrae un elemento de la pila
      * @return El primer nodo de la pila
      */
-    public Node extract(){
+    public T extract(){
         Node nodeTop = this.top;
         if(this.top != null){
             this.top = this.top.getNext();
@@ -46,7 +46,7 @@ public class Stack<T extends Comparable<T>> {
         if(0 < this.size){
             this.size--;
         }
-        return nodeTop;
+        return (T)nodeTop.getDataT();
     }
 
     /**
@@ -54,7 +54,7 @@ public class Stack<T extends Comparable<T>> {
      * @return True si la lista esta vacia, false si tiene algun elemento
      */
     public boolean isEmpty(){
-        if(0 < this.size) {
+        if(0 == this.size) {
             return true;
         } else{
             return false;

@@ -88,6 +88,7 @@ public class CircularList<T extends Comparable<T>> {
                 current.setNext(aux.getNext());
             }
             aux = null;
+            size--;
         }
     }
 

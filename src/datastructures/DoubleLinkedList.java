@@ -127,6 +127,7 @@ public class DoubleLinkedList<T extends Comparable<T>> {
             if (position == 0) {
                 this.first.getNext().setPrevious(null);
                 this.first = this.first.getNext();
+                this.size--;
             } else {
                 if (position <= (this.size - 1)) {
                     DoubleNode current = this.first;

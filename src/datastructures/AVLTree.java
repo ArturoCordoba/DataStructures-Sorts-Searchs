@@ -61,7 +61,7 @@ public class AVLTree<T extends Comparable> {
      * @param node Nodo que se desea balancear
      * @return Nodo correspondiente segun el resultado del balanceo
      */
-    public AVLNode leftRotation(AVLNode node){
+    private AVLNode leftRotation(AVLNode node){
         AVLNode aux = node.getLeft();
 
         node.setLeft(aux.getRight());
@@ -77,7 +77,7 @@ public class AVLTree<T extends Comparable> {
      * @param node Nodo que se desea balancear
      * @return Nodo correspondiente segun el resultado del balanceo
      */
-    public AVLNode rightRotation(AVLNode node){
+    private AVLNode rightRotation(AVLNode node){
         AVLNode aux = node.getRight();
 
         node.setRight(aux.getLeft());
@@ -93,7 +93,7 @@ public class AVLTree<T extends Comparable> {
      * @param node Nodo que se desea balancear
      * @return Nodo correspondiente segun el resultado del balanceo
      */
-    public AVLNode doubleLeftRotation(AVLNode node){
+    private AVLNode doubleLeftRotation(AVLNode node){
         AVLNode aux;
 
         node.setLeft(this.rightRotation(node.getLeft()));
@@ -106,7 +106,7 @@ public class AVLTree<T extends Comparable> {
      * @param node Nodo que se desea balancear
      * @return Nodo correspondiente segun el resultado del balanceo
      */
-    public AVLNode doubleRightRotation(AVLNode node) {
+    private AVLNode doubleRightRotation(AVLNode node) {
         AVLNode aux;
 
         node.setRight(this.leftRotation(node.getRight()));
@@ -192,7 +192,7 @@ public class AVLTree<T extends Comparable> {
      * @param node Nodo actual
      * @return Nodo correspondiente segun el resultado del balanceo
      */
-    public AVLNode remove(T element, AVLNode node){
+    private AVLNode remove(T element, AVLNode node){
         if(node == null){
             return null;
         } else{

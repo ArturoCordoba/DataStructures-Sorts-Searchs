@@ -19,7 +19,7 @@ public class LinkedList<T extends Comparable<T>> {
         return first;
     }
 
-    public void setFirst(Node first) {
+    private void setFirst(Node first) {
         this.first = first;
     }
 
